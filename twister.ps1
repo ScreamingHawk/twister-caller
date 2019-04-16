@@ -1,15 +1,16 @@
-$sound = new-Object System.Media.SoundPlayer;
+$directions = 'left','right'
+$limbs = 'hand','foot'
+$colours = 'green','red','blue','yellow'
 
-$directions = 'left.wav','right.wav'
-$limbs = 'hand.wav','foot.wav'
-$colours = 'green.wav','red.wav','blue.wav','yellow.wav'
+Add-Type -AssemblyName System.speech
+$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
+$speak.SelectVoice('Microsoft Zira Desktop')
+$speak.Rate = 3
 
 While(1){
-    $sound.SoundLocation = $directions[(Get-Random -Maximum ([array]$directions).count)]
-    $sound.PlaySync();
-    $sound.SoundLocation = $limbs[(Get-Random -Maximum ([array]$limbs).count)]
-    $sound.PlaySync();
-    $sound.SoundLocation = $colours[(Get-Random -Maximum ([array]$colours).count)]
-    $sound.PlaySync();
+    
+    $speak.Speak($directions[(Get-Random -Maximum ([array]$directions).count)])
+    $speak.Speak($limbs[(Get-Random -Maximum ([array]$limbs).count)])
+    $speak.Speak($colours[(Get-Random -Maximum ([array]$colours).count)])
     Start-Sleep -s 3
 }
