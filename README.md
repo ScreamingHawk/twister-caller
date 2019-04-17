@@ -30,16 +30,6 @@ $speak.SelectVoice('Microsoft Zira Desktop')
 
 ### Too fast
 
-Remove this line and try again
-
-```
-$speak.Rate = 3
-```
-
-Alternatively, you can change the value. Can be negative to be even slower
-
-### Gap between calls too fast
-
 Change the value on this line
 
 ```
